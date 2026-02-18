@@ -28,14 +28,25 @@ function App() {
     }
   });
 
-  return (
-    <div>
-      <h1>Pokémon PWA</h1>
-      <SearchBar onSearch={handleSearch} />
-      {error && <p>{error}</p>}
-      {pokemon && <PokemonCard pokemon={pokemon} />}
-    </div>
-  );
+return (
+  <div className="app">
+    <h1>Pokédex PWA</h1>
+
+    <SearchBar onSearch={handleSearch} />
+
+    {error && <p>{error}</p>}
+
+    {!pokemon && !error && (
+      <div className="empty-state">
+        <p>Busca un Pokémon por nombre</p>
+        <p>Ejemplo: pikachu, charizard, mewtwo...</p>
+      </div>
+    )}
+
+    {pokemon && <PokemonCard pokemon={pokemon} />}
+  </div>
+);
+
 }
 
 export default App;
